@@ -47,6 +47,6 @@
 			<canvas id="MQ7" class="chart col"></canvas>
 		</div>
 	</div>
-	<script src="chart.js"></script>
+	<script src="charts.js"></script>
 </body>
 </html>

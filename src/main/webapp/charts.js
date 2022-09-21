@@ -33,9 +33,9 @@ async function fetchLiveData() {
 	update(DDChart, datapoints.data.DD);
 	update(HIChart, datapoints.data.HI);
 	update(HMDChart, datapoints.data.HMD);
-	update(MQ135Chart, datapoints.data.HMD);
-	update(MQ2Chart, datapoints.data.HMD);
-	update(MQ7Chart, datapoints.data.HMD);
+	update(MQ135Chart, datapoints.data.MQ135);
+	update(MQ2Chart, datapoints.data.MQ2);
+	update(MQ7Chart, datapoints.data.MQ7);
 };
 function plot(elementId, label, labels, data) {
 	const ctx = document.getElementById(elementId).getContext('2d');
