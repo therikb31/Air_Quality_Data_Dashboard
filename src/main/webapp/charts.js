@@ -10,7 +10,7 @@ var MQ7Chart = null;
 var globalLabel = ['', '', '', '', '', ''];
 
 async function fetchInitialData() {
-	const url = 'http://localhost:8080/AirQualityDashboard/GetSensorData';
+	const url = './GetSensorData';
 	const response = await fetch(url);
 	const datapoints = await response.json();
 	plotTemperature(datapoints);
@@ -24,18 +24,35 @@ async function fetchInitialData() {
 	plotMQ7(datapoints);
 };
 async function fetchLiveData() {
-	const url = 'http://localhost:8080/AirQualityDashboard/GetLastSensorData';
+	const url = './GetLastSensorData';
 	const response = await fetch(url);
 	const datapoints = await response.json();
 	update(tempChart, datapoints.data.TMP);
+	document.getElementById("temperature").innerHTML=datapoints.data.TMP;
+	
 	update(C2H5OHChart, datapoints.data.C2H5OH);
+	document.getElementById("c2h5oh").innerHTML=datapoints.data.C2H5OH;
+	
 	update(COChart, datapoints.data.CO);
+	document.getElementById("co").innerHTML=datapoints.data.CO;
+	
 	update(DDChart, datapoints.data.DD);
+	document.getElementById("dd").innerHTML=datapoints.data.DD;
+	
 	update(HIChart, datapoints.data.HI);
+	document.getElementById("hi").innerHTML=datapoints.data.HI;
+	
 	update(HMDChart, datapoints.data.HMD);
+	document.getElementById("hmd").innerHTML=datapoints.data.HMD;
+	
 	update(MQ135Chart, datapoints.data.MQ135);
+	document.getElementById("mq135").innerHTML=datapoints.data.MQ135;
+	
 	update(MQ2Chart, datapoints.data.MQ2);
+	document.getElementById("mq2").innerHTML=datapoints.data.MQ2;
+	
 	update(MQ7Chart, datapoints.data.MQ7);
+	document.getElementById("mq7").innerHTML=datapoints.data.MQ7;
 };
 function plot(elementId, label, labels, data) {
 	const ctx = document.getElementById(elementId).getContext('2d');
@@ -82,7 +99,6 @@ function plotDD(datapoints) {
 	const temps = datapoints.data.map(function(index) {
 		return index.DD;
 	});
-	console.log(temps);
 	DDChart = plot("DD", "DD", globalLabel, temps);
 }
 function plotHI(datapoints) {
